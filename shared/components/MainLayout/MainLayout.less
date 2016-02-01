@@ -1,0 +1,23 @@
+@import "../../assets/media.less";
+@import "../../assets/mixins.less";
+@import "../../assets/palette.less";
+@import '../../assets/typography.less';
+
+.MainLayout {
+  background-color: #eaeaea;
+}
+
+@media @phone {
+  .MainLayout {
+    position: relative;
+    min-height: 500px;
+    height: auto;
+  }
+}
+
+.MainLayout__drawer-nav-link {
+  text-decoration: none;
+  font-size: 15px !important;
+  color: @text-color;
+  text-transform: uppercase;
+}

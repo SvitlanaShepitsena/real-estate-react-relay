@@ -1,0 +1,30 @@
+@import "../../assets/media.less";
+@import "../../assets/mixins.less";
+@import "../../assets/palette.less";
+@import '../../assets/typography.less';
+
+.HomePageCities {
+  max-width: 1200px;
+  margin: 40px auto 0px;
+}
+
+.HomePageCities__card {
+  color: @additional-text-color;
+  width: 100%;
+  padding: 0px 16px;
+}
+
+.HomePageCities__card__head {
+  text-align: center;
+}
+
+.HomePageCities__card-image {
+  max-height: 256px;
+  height: auto;
+  max-width: 320px;
+  width: 100%;
+  margin: 0px auto 16px auto;
+  @media @phone {
+    width: 100%;
+  }
+}
