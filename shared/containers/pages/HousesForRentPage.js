@@ -12,14 +12,15 @@ import Grid, {Cell} from 'react-mdl/lib/Grid';
 import _ from 'lodash';
 
 import CityCard from '../../components/City/CityCard';
-import * as citiesActions from '../../actions/cities';
+import * as rentCitiesActions from '../../actions/rentCities';
 
 class HousesForRentPageContainer extends Component {
     componentDidMount() {
-        this.props.getCitiesIfNeeded(this.props.params, this.props.location);
+        this.props.getRentCitiesIfNeeded();
     }
 
     render() {
+        const cities = this.props.rentCities;
         const rent = ogProps.housesForRentPage;
         return (
             <div style={{maxWidth:"100%"}}>
@@ -38,9 +39,9 @@ class HousesForRentPageContainer extends Component {
                     <h1 style={{fontSize:34}}>Chicago North Suburbs Apartments for Rent
                     </h1>
                     <hr/>
-                    { this.props.cities &&
+                    { cities &&
                     <Grid>
-                        {Object.keys(this.props.cities).map(city=> {
+                        {Object.keys(cities).map(city=> {
                             return (
                                 <Cell
                                     col={4}
@@ -66,14 +67,14 @@ class HousesForRentPageContainer extends Component {
     }
 }
 function mapStateToProps(state) {
-    return state.cities;
+    return state.rentCities;
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(citiesActions, dispatch);
+    return bindActionCreators(rentCitiesActions, dispatch);
 }
 HousesForRentPageContainer.need = [
-    citiesActions.getCitiesIfNeeded
+    rentCitiesActions.getRentCitiesIfNeeded
 ]
 export default connect(mapStateToProps, mapDispatchToProps)(HousesForRentPageContainer);
 

@@ -3,6 +3,7 @@
 import React, {Component, PropTypes} from 'react';
 import Helmet from 'react-helmet';
 import {AppUrl, fbImage, appType, ogProps} from "../../config.js";
+import Spinner from 'react-mdl/lib/Spinner';
 
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
@@ -42,6 +43,12 @@ class ZipTypePage extends Component {
 
         return (
             <div style={{width:'100%'}}>
+                {this.props.isFetching &&
+                <div style={{maxWidth:100,margin:"0 auto"}}>
+                    <Spinner singleColor/>
+                </div>
+                }
+
                 {saleRent == 'sale' && city &&
                 < Helmet
                     title={metaTitleSale}
@@ -73,7 +80,7 @@ class ZipTypePage extends Component {
                 </div>
                 }
 
-                {!this.props.params.street &&
+                {!this.props.params.street && !this.props.isFetching &&
                 <div>
                     {this.props.houses &&
                     <div>
@@ -115,6 +122,7 @@ class ZipTypePage extends Component {
                             {city} Houses for Sale </h1>
                         <hr/>
 
+                        {/*Listings Data from DB*/}
                         <ul style={{listStyle:'none',padding:0}}>
                             {this.props.houses.map((house, index)=> {
                                 return (

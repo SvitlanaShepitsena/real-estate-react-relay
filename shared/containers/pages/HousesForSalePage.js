@@ -5,6 +5,7 @@ import Helmet from "react-helmet";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
+import Spinner from 'react-mdl/lib/Spinner';
 import {Link} from 'react-router';
 import {fbImage, appType, ogProps} from "../../config.js";
 
@@ -28,11 +29,12 @@ class HousesForSalePageContainer extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.cities = _.keys(nextProps.cities);
     }
 
     render() {
         const sale = ogProps.housesForSalePage;
+        const cities = _.keys(this.props.cities);
+
         return (
             <div style={{maxWidth:"100%"}}>
                 <Helmet
@@ -49,7 +51,13 @@ class HousesForSalePageContainer extends Component {
                 <div>
                     <h1 style={{fontSize:34}}>Chicago North Suburbs Houses for Sale </h1>
                     <hr/>
-                    {this.props.cities &&
+                    {this.props.isFetching &&
+                    <div style={{maxWidth:100,margin:"0 auto"}}>
+                        <Spinner singleColor/>
+
+                    </div>
+                    }
+                    {this.props.cities && !this.props.isFetching &&
                     <Grid>
                         {Object.keys(this.props.cities).map(city=> {
                             return (

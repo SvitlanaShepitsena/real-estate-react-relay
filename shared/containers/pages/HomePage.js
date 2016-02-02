@@ -1,17 +1,29 @@
 import React from 'react';
-import HomeContent from '../../components/HomeContent/HomeContent.js';
+import _ from 'lodash';
 import Helmet from "react-helmet";
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+
 import {fbImage, appImage, appTitle, appType, appUrl, ogProps} from "../../config.js";
-export default class HomePage extends React.Component {
-    // Constructor
+import HomeContent from '../../components/HomeContent/HomeContent.js';
+import HousesList from '../../components/HomeContent/HousesList.js';
+import * as citiesActions from '../../actions/cities';
+import * as rentCitiesActions from '../../actions/rentCities';
+
+class HomePageContainer extends React.Component {
     constructor(props) {
-        // Running constructor of Parent (React.Component) for binding this to object.
-        // Dynamically assigned global property This is always a component itself.
         super(props);
+    }
+
+    componentDidMount() {
+        this.props.getCitiesIfNeeded();
+        this.props.getRentCitiesIfNeeded();
     }
 
     render() {
         const home = ogProps.homePage;
+        const cities = _.keys(this.props.cities.cities);
+        const rentCities = _.keys(this.props.rentCities.rentCities);
         return (
             <div style={{minHeight:1000}}>
                 <Helmet
@@ -30,8 +42,22 @@ export default class HomePage extends React.Component {
                 ]}
                 />
                 <HomeContent></HomeContent>
+                {/*
+                 <HousesList cities={cities} rentCities={rentCities}></HousesList>
+                 */}
             </div>
         )
     }
 
 }
+function mapStateToProps(state) {
+    return state;
+}
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(Object.assign({}, rentCitiesActions, citiesActions), dispatch);
+}
+HomePageContainer.need = [
+    citiesActions.getCitiesIfNeeded,
+    rentCitiesActions.getRentCitiesIfNeeded
+]
+export default connect(mapStateToProps, mapDispatchToProps)(HomePageContainer);

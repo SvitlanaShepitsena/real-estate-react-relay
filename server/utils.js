@@ -4,7 +4,7 @@ import geoip       from 'geoip-lite';
 import strformat   from 'strformat';
 import _ from 'lodash';
 
-import clientConfig                     from '../etc/client-config.json';
+import clientConfig from '../etc/client-config.json';
 import {getSupportedLocales, sprintf} from '../shared/utils';
 
 export function fetchComponentsData(dispatch, components, params, location) {
@@ -17,8 +17,6 @@ export function fetchComponentsData(dispatch, components, params, location) {
             needs.push(...component.need);
         }
     }
-    needs = _.takeRight(needs);
-    console.log(needs);
     const promises = needs.map(need => {
         return dispatch(need(params,location));
     });

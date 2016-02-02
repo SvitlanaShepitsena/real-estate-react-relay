@@ -24,7 +24,7 @@ export default class Footer extends Component {
                     linkToShare={linkToShare}
                     onRequestClose={onShareClose}
                 />
-                <Grid>
+                <Grid className="Footer__grid">
                     <Cell col={3}>
                         <div className="Footer__menu">
                             <h3 className="Footer__menu-header">Re/Max 1st Class</h3>

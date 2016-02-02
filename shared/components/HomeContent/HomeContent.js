@@ -1,10 +1,8 @@
 import React, {Component, PropTypes} from 'react';
-import cx                              from 'classnames';
+import cx from 'classnames';
 import Grid, {Cell} from 'react-mdl/lib/Grid';
-import Button      from 'react-mdl/lib/Button';
-import HomeList from '../HomePageCities/HomePageCities.js';
+import CitiesSlider from '../CitiesSlider/CitiesSlider.js';
 import SearchForm from '../Search/SearchForm.js';
-import {Link} from 'react-router';
 
 if (process.env.BROWSER) {
     require('./HomeContent.less');
@@ -50,7 +48,7 @@ export default class HomeContent extends React.Component {
                 </Grid>
                 <div className="HomePage_sliderContainer">
                     <div className="HomePage_slider">
-                        <HomeList></HomeList>
+                        <CitiesSlider></CitiesSlider>
                     </div>
                 </div>
             </div>

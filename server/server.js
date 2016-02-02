@@ -75,7 +75,6 @@ app.all(/.*/, function (req, res, next) {
 
     var host = req.header("host");
     hostUrl = req.protocol + "://www." + host
-    console.log(hostUrl);
     next();
 });
 

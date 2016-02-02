@@ -4,14 +4,14 @@ import {Card, CardTitle, CardActions} from 'react-mdl/lib/Card';
 import {Link} from 'react-router';
 
 if (process.env.BROWSER) {
-    require('./HomePageCities.less');
+    require('./CitiesSlider.less');
 }
 
-export default class HomePageCities extends React.Component {
+export default class CitiesSlider extends React.Component {
 
     render() {
         return (
-            <div className='HomePageCities'>
+            <div className='CitiesSlider'>
                 <Grid >
                     <Cell
                         align="top"
@@ -20,7 +20,7 @@ export default class HomePageCities extends React.Component {
                         phone={12}>
                         <Link to="/houses-for-sale/skokie" style={{textDecoration:'none'}}>
                             <Card shadow={0}
-                                  className="HomePageCities__card-image"
+                                  className="CitiesSlider__card-image"
                                   style={{ background: 'url(http://res.cloudinary.com/svitlana/image/upload/v1453658894/skokie-downtown_rdnonv.jpg) center / cover' }}>
                                 <CardTitle expand/>
                                 <CardActions
@@ -37,7 +37,7 @@ export default class HomePageCities extends React.Component {
                         phone={12}>
                         <Link to="/houses-for-sale/northbrook" style={{textDecoration:'none'}}>
                             <Card shadow={0}
-                                  className="HomePageCities__card-image"
+                                  className="CitiesSlider__card-image"
                                   style={{ background: 'url(http://res.cloudinary.com/svitlana/image/upload/v1453662336/northbrook-image-mockup_fksvx3.jpg) center / cover' }}>
                                 <CardTitle expand/>
                                 <CardActions
@@ -54,7 +54,7 @@ export default class HomePageCities extends React.Component {
                         phone={12}>
                         <Link to="/houses-for-sale/glenview" style={{textDecoration:'none'}}>
                             <Card shadow={0}
-                                  className="HomePageCities__card-image"
+                                  className="CitiesSlider__card-image"
                                   style={{ background: 'url(http://res.cloudinary.com/svitlana/image/upload/v1454078423/glenview-mockup_zniuuy.jpg) center / cover' }}>
                                 <CardTitle expand/>
                                 <CardActions

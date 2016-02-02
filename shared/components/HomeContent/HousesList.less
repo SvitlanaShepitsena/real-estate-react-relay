@@ -1,0 +1,54 @@
+@import "../../assets/media.less";
+@import "../../assets/mixins.less";
+@import "../../assets/palette.less";
+@import '../../assets/typography.less';
+
+.HousesList {
+  background-color: whitesmoke;
+  margin: 40px auto 0px;
+}
+
+.HousesList__grid {
+  max-width: 1200px;
+}
+
+.HousesList__ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.HousesList__header {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 5px 0px;
+}
+
+.HousesList__link {
+  color: @text-color;
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.HousesList__card {
+  color: @additional-text-color;
+  width: 100%;
+  padding: 0px 16px;
+}
+
+.HousesList__card__head {
+  text-align: center;
+}
+
+.HousesList__card-image {
+  max-height: 256px;
+  height: auto;
+  max-width: 320px;
+  width: 100%;
+  margin: 0px auto 16px auto;
+  @media @phone {
+    width: 100%;
+  }
+}
+

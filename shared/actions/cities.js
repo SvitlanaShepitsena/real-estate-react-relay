@@ -8,21 +8,26 @@ export const CITIES_GET_SUCCESS = 'CITIES_GET_SUCCESS';
 export const CITIES_GET_FAILURE = 'CITIES_GET_FAILURE';
 
 /*Action Creator functions*/
-export function citiesGet(saleRent) {
+export function citiesGet() {
     return {
         type: CITIES_GET,
-        promise: request.get(`${config.fireDb}${saleRent}.json?shallow=true`),
+        promise: request.get(`${config.fireDb}sale.json?shallow=true`),
         obj: true
     };
 }
 
-export function getCitiesIfNeeded(params, location) {
-    const saleRent = location.pathname.indexOf('sale') > -1 ? 'sale' : 'rent';
+export function getCitiesIfNeeded() {
+
     return (dispatch, getState) => {
+        var saleCities = getState().cities;
+        if (!saleCities.length) {
 
-        return dispatch(citiesGet(saleRent));
-
-    };
+            return dispatch(citiesGet());
+        } else {
+            return saleCities;
+        }
+    }
 }
+
 
 

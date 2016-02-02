@@ -3,6 +3,7 @@
 import React, {Component, PropTypes} from 'react';
 import Helmet from 'react-helmet';
 import {appUrl, fbImage, appType, ogProps} from "../../config.js";
+import Spinner from 'react-mdl/lib/Spinner';
 
 import Grid, {Cell} from 'react-mdl/lib/Grid';
 import {Card, CardTitle, CardText, CardActions} from 'react-mdl/lib/Card';
@@ -43,8 +44,8 @@ class HousePage extends Component {
             var metaTitleSale = (house.address.city + ' ' + "home for sale | " + house.address.street + ". ID:" + house.mls);
             var metaTitleRent = ("FOR RENT! | " + house.address.street + ", " + house.address.city + ", " + house.address.zip);
 
-            var ogTitleSale = ("FOR SALE! ☆ "  + house.address.street + ", " + house.address.city + ", " + house.address.zip + " ☆ Re/Max 1st Class");
-            var ogTitleRent = ("FOR RENT! ☆ "  + house.address.street + ", " + house.address.city + ", " + house.address.zip + " ☆ Re/Max 1st Class");
+            var ogTitleSale = ("FOR SALE! ☆ " + house.address.street + ", " + house.address.city + ", " + house.address.zip + " ☆ Re/Max 1st Class");
+            var ogTitleRent = ("FOR RENT! ☆ " + house.address.street + ", " + house.address.city + ", " + house.address.zip + " ☆ Re/Max 1st Class");
 
             var ogDescription = house.type + ' ' + mls + ' ✔ Check out and schedule a showing! ☏  ' + this.props.house.description;
         }
@@ -79,7 +80,13 @@ class HousePage extends Component {
                     />
                     }
 
-                    {house &&
+                    {this.props.isFetching &&
+                    <div style={{maxWidth:100,margin:"0 auto"}}>
+                        <Spinner singleColor/>
+                    </div>
+                    }
+
+                    {house && !this.props.isFetching &&
                     <div>
                         <ul
                             style={{listStyle:'none', margin:'0px', padding:'0px'}}>
@@ -164,13 +171,13 @@ class HousePage extends Component {
                                     <h4> ${house.price.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")} </h4>
                                     }
                                     {house.shortSale &&
-                                    <div> Short Sale </div>
+                                    <p> Short Sale </p>
                                     }
                                     {house.mls &&
-                                    <div> MLS#: {house.mls} </div>
+                                    <p> {"MLS#: " + house.mls} </p>
                                     }
                                     {house.year &&
-                                    <div> Year: {house.year} </div>
+                                    <p> {"Year: " + house.year} </p>
                                     }
                                 </li>
                             </ul>
@@ -192,16 +199,13 @@ class HousePage extends Component {
                             <article style={{margin:'0px 10px', paddingBottom:16, fontSize:13, width:"100%"}}>
                                 <h5>Key Facts:</h5>
                                 <Grid>
-                                    <Cell
-                                        col={6}
-                                        phone={1}
-                                    >
+                                    <Cell col={6} phone={1}>
                                         {house.type &&
-                                        <p> Type: {house.type} </p>
+                                        <p> {"Type: " + house.type} </p>
                                         }
 
                                         {house.exteriorDetails && house.exteriorDetails['Lot Size'] &&
-                                        <p> Lot Size: {house.exteriorDetails['Lot Size']} </p>
+                                        <p> {"Lot Size: " + house.exteriorDetails['Lot Size']} </p>
                                         }
                                         {house.price &&
                                         <p> Price: ${house.price.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")} </p>
@@ -210,18 +214,15 @@ class HousePage extends Component {
                                         <p> Year Built: {house.year} </p>
                                         }
                                     </Cell>
-                                    <Cell
-                                        col={6}
-                                        phone={1}
-                                    >
+                                    <Cell col={6} phone={1}>
                                         {house.beds &&
-                                        <p> Beds: {house.beds} </p>
+                                        <p> {"Beds: " + house.beds} </p>
                                         }
                                         {house.bath &&
-                                        <p> Baths: {house.bath} </p>
+                                        <p> {"Baths: " + house.bath} </p>
                                         }
                                         {house.exteriorDetails && house.exteriorDetails['Parking'] &&
-                                        <p> Parking: {house.exteriorDetails['Parking']} </p>
+                                        <p> {"Parking: " + house.exteriorDetails['Parking']} </p>
                                         }
                                     </Cell>
 
@@ -237,12 +238,7 @@ class HousePage extends Component {
                                                 const val = house.exteriorDetails[extDetail];
                                                 return (
                                                     <li key={extDetail}>
-                                                    <span>
-                                                        {extDetail + ": "}
-                                                    </span>
-                                                    <span>
-                                                        {val}
-                                                    </span>
+                                                        {extDetail + ": " + val}
                                                     </li>
                                                 );
                                             })
@@ -261,12 +257,7 @@ class HousePage extends Component {
                                                 const val = house.interiorDetails[intDetail];
                                                 return (
                                                     <li key={intDetail}>
-                                                    <span>
-                                                        {intDetail + ": "}
-                                                    </span>
-                                                    <span>
-                                                        {val}
-                                                    </span>
+                                                        {intDetail + ": " + val }
                                                     </li>
                                                 );
                                             })
@@ -284,12 +275,7 @@ class HousePage extends Component {
                                                 const val = house.utilities[util];
                                                 return (
                                                     <li key={util}>
-                                                    <span>
-                                                        {util + ": "}
-                                                    </span>
-                                                    <span>
-                                                        {val}
-                                                    </span>
+                                                        {util + ": " + val}
                                                     </li>
                                                 );
                                             })
@@ -307,12 +293,7 @@ class HousePage extends Component {
                                                 const val = house.publicFacts[publicFact];
                                                 return (
                                                     <li key={publicFact}>
-                                                    <span>
-                                                        {publicFact + ": "}
-                                                    </span>
-                                                    <span>
-                                                        {val}
-                                                    </span>
+                                                        {publicFact + ": " + val}
                                                     </li>
                                                 );
                                             })
@@ -330,12 +311,7 @@ class HousePage extends Component {
                                                 const val = house.taxes[tax];
                                                 return (
                                                     <li key={tax}>
-                                                    <span>
-                                                        {tax + ": "}
-                                                    </span>
-                                                    <span>
-                                                        {val}
-                                                    </span>
+                                                        {tax + ": " + val}
                                                     </li>
                                                 );
                                             })
@@ -346,8 +322,7 @@ class HousePage extends Component {
                             {
                                 house.agent &&
                                 <article style={{margin: '0px 10px', paddingBottom: 16}}>
-                                    <p> Listing
-                                        Broker: {house.agent.split('_').map(init=>init[0].toUpperCase() + init.slice(1)).join(' ')}
+                                    <p> {"Listing Broker:" + house.agent.split('_').map(init=>init[0].toUpperCase() + init.slice(1)).join(' ')}
                                     </p>
                                 </article>
                             }
