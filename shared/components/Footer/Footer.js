@@ -15,7 +15,6 @@ export default class Footer extends Component {
     render() {
         const {l} = this.context.i18n;
         const {links, linkToShare, showShareDialog, onLinkClick, onShareClick, onShareClose} = this.props;
-
         return (
             <footer className='Footer'>
                 <ShareDialog
@@ -33,8 +32,9 @@ export default class Footer extends Component {
                                     <span >4023 W. Church St.</span>
                                 </li>
                                 <li>
-                                    <span>Skokie, IL, 60076</span>
+                                    <span>Skokie IL, 60076</span>
                                 </li>
+
                                 <li>
                                     <span>
                                         Phone: (847) 674-9797

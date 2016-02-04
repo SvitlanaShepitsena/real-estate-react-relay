@@ -3,7 +3,6 @@ import Grid, {Cell} from 'react-mdl/lib/Grid';
 import {Card, CardTitle, CardActions} from 'react-mdl/lib/Card';
 import {Link} from 'react-router';
 import _ from 'lodash';
-import Dropdown from 'react-dropdown';
 
 if (process.env.BROWSER) {
     require('./HousesList.less');
@@ -105,8 +104,6 @@ export default class HousesList extends React.Component {
                         tablet={6}
                         phone={12}>
 
-                        <Dropdown style={{border:"black 1px solid", background:'red'}} options={options} onChange={this._onSelect.bind(this)} value={defaultOption}
-                                  placeholder="Select an option"/>
                     </Cell>
                 </Grid>
             </div>
