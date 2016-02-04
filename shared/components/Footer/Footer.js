@@ -15,7 +15,6 @@ export default class Footer extends Component {
     render() {
         const {l} = this.context.i18n;
         const {links, linkToShare, showShareDialog, onLinkClick, onShareClick, onShareClose} = this.props;
-
         return (
             <footer className='Footer'>
                 <ShareDialog
