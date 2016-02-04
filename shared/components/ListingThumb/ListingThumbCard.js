@@ -24,10 +24,10 @@ export default class ListingThumbCard extends Component {
                         </div>
                         }
 
-                        {!(house.images && house.images.length) &&
+                        {!house.images && !house.images.length &&
                         <img
                             src='http://res.cloudinary.com/svitlana/image/upload/v1453494429/house-picture-icon_og71rx.png'
-                            alt={house.address.street} style={{width:200}}/>
+                            alt={house.address.street} style={{width:200,height:'auto'}}/>
                         }
                     </li>
                     <li style={{display:'inline-block',verticalAlign:'top',margin:'0px 8px'}}>

@@ -72,6 +72,33 @@ class HousesForSalePageContainer extends Component {
                             );
                         })}
                     </Grid>}
+                    <h2>Home Prices in Chicago Suburbs</h2>
+                    <Grid>
+                        <Cell col={2}>
+                            <h3>1 Bedroom Homes</h3>
+                            <Card style={{width:'100%'}}>
+                                <p>Sorry, there is no listings present at this time</p>
+                            </Card>
+                        </Cell>
+                        <Cell col={2}>
+                            <h3>2 Bedroom Homes</h3>
+                            <Card style={{width:'100%'}}>
+                                <p>Sorry, there is no listings present at this time</p>
+                            </Card>
+                        </Cell>
+                        <Cell col={2}>
+                            <h3>3 Bedroom Homes</h3>
+                            <Card style={{width:'100%'}}>
+                                <p>Sorry, there is no listings present at this time</p>
+                            </Card>
+                        </Cell>
+                        <Cell col={2}>
+                            <h3>4 Bedroom Homes</h3>
+                            <Card style={{width:'100%'}}>
+                                <p>Sorry, there is no listings present at this time</p>
+                            </Card>
+                        </Cell>
+                    </Grid>
                 </div>
                 }
 

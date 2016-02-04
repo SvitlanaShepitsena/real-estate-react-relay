@@ -90,12 +90,10 @@ app.use((req, res) => {
     // Process old links like /en/articles
     const locale = detectLocale(req);
 
-
-
     if (req.user) {
         console.log(req.user);
     }
-    const store = configureStore({user: req.user,url:hostUrl.toString()});
+    const store = configureStore({user: req.user, url: hostUrl.toString()});
 
     const i18nTools = i18nToolsRegistry[locale];
     // Method of React-router that provides renderProp with property components consisting of all components for the particular view
@@ -115,7 +113,7 @@ app.use((req, res) => {
                     renderProps.location
                 )
                     .then(() => {
-                        const componentHTML = ReactDOM.renderToString(
+                        const componentHTML = ReactDOM.renderToStaticMarkup(
                             <Provider store={store}>
                                 <i18n.Provider i18n={i18nTools}>
                                     <RoutingContext {...renderProps}/>
