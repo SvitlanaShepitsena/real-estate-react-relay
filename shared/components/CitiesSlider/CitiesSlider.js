@@ -17,7 +17,6 @@ export default class CitiesSlider extends React.Component {
         var settings = {
             dots: true,
             infinite: false,
-            lazyLoad: true,
             speed: 500,
             slidesToShow: 4,
             slidesToScroll: 4,
