@@ -8,10 +8,34 @@
   margin: 40px auto 0px;
 }
 
-.CitiesSlider__card {
+.CitiesSlider__city {
+  color: @text-color;
+  margin: 10px;
+  font-size: 16px;
+}
+
+.CitiesSlider__header {
+  text-align: center;
   color: @additional-text-color;
-  width: 100%;
-  padding: 0px 16px;
+  padding: 12px 0px 0px;
+  margin: 0px;
+  font-size: 30px;
+}
+
+@media @phone {
+  .CitiesSlider__header {
+    padding: 12px 0px 0px;
+    margin: 0px;
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+.CitiesSlider__card {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+  background-color: whitesmoke;
+  margin: 10px;
+  padding-bottom: 10px;
 }
 
 .CitiesSlider__card__head {
@@ -19,12 +43,14 @@
 }
 
 .CitiesSlider__card-image {
-  max-height: 256px;
-  height: auto;
-  max-width: 320px;
+  display: block;
   width: 100%;
-  margin: 0px auto 16px auto;
-  @media @phone {
-    width: 100%;
-  }
+}
+
+.slick-next::before {
+  color: @primary-1-color !important;
+}
+
+.slick-prev::before {
+  color: @primary-1-color !important;
 }

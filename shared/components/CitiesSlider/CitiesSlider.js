@@ -1,7 +1,10 @@
 import React from 'react';
 import Grid, {Cell} from 'react-mdl/lib/Grid';
-import {Card, CardTitle, CardActions} from 'react-mdl/lib/Card';
+import {Card, CardText, CardTitle, CardActions} from 'react-mdl/lib/Card';
+import Slider from 'react-slick';
 import {Link} from 'react-router';
+import _ from 'lodash';
+import Spinner from 'react-mdl/lib/Spinner';
 
 if (process.env.BROWSER) {
     require('./CitiesSlider.less');
@@ -10,62 +13,68 @@ if (process.env.BROWSER) {
 export default class CitiesSlider extends React.Component {
 
     render() {
+        console.log(this.props.stat);
+        var settings = {
+            dots: true,
+            infinite: false,
+            lazyLoad: true,
+            speed: 500,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            responsive: [{
+                breakpoint: 1024,
+                settings: {
+                    dots: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true
+                }
+            }, {
+                breakpoint: 600,
+                settings: {
+                    dots: true,
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            }, {
+                breakpoint: 480,
+                settings: {
+                    dots: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }]
+        };
         return (
+
             <div className='CitiesSlider'>
-                <Grid >
-                    <Cell
-                        align="top"
-                        col={4}
-                        tablet={6}
-                        phone={12}>
-                        <Link to="/houses-for-sale/skokie" style={{textDecoration:'none'}}>
-                            <Card shadow={0}
-                                  className="CitiesSlider__card-image"
-                                  style={{ background: 'url(http://res.cloudinary.com/svitlana/image/upload/v1453658894/skokie-downtown_rdnonv.jpg) center / cover' }}>
-                                <CardTitle expand/>
-                                <CardActions
-                                    style={{height: '52px', padding: '16px', background: 'rgba(0,0,0,0.2)'}}>
-                                    <span
-                                        style={{color: '#fff', fontSize: '18px', fontWeight: '400'}}> Skokie Real Estate </span>
-                                </CardActions>
-                            </Card>
-                        </Link>
-                    </Cell>
-                    <Cell
-                        col={4}
-                        tablet={6}
-                        phone={12}>
-                        <Link to="/houses-for-sale/northbrook" style={{textDecoration:'none'}}>
-                            <Card shadow={0}
-                                  className="CitiesSlider__card-image"
-                                  style={{ background: 'url(http://res.cloudinary.com/svitlana/image/upload/v1453662336/northbrook-image-mockup_fksvx3.jpg) center / cover' }}>
-                                <CardTitle expand/>
-                                <CardActions
-                                    style={{height: '52px', padding: '16px', background: 'rgba(0,0,0,0.2)'}}>
-                                    <span
-                                        style={{color: '#fff', fontSize: '18px', fontWeight: '400'}}> Northbrook Real Estate </span>
-                                </CardActions>
-                            </Card>
-                        </Link>
-                    </Cell>
-                    <Cell
-                        col={4}
-                        tablet={6}
-                        phone={12}>
-                        <Link to="/houses-for-sale/glenview" style={{textDecoration:'none'}}>
-                            <Card shadow={0}
-                                  className="CitiesSlider__card-image"
-                                  style={{ background: 'url(http://res.cloudinary.com/svitlana/image/upload/v1454078423/glenview-mockup_zniuuy.jpg) center / cover' }}>
-                                <CardTitle expand/>
-                                <CardActions
-                                    style={{height: '52px', padding: '16px', background: 'rgba(0,0,0,0.2)'}}>
-                                    <span
-                                        style={{color: '#fff', fontSize: '18px', fontWeight: '400'}}> Glenview Real Estate </span>
-                                </CardActions>
-                            </Card>
-                        </Link>
-                    </Cell>
-                </Grid>
+                <h2 className="CitiesSlider__header">North Chicago Suburbs Homes for Sale</h2>
+                {!_.keys(this.props.stat).length &&
+                <div style={{maxWidth:100,margin:"0 auto"}}>
+                    <Spinner singleColor/>
+                </div>
+                }
+
+                {_.keys(this.props.stat).length &&
+                <Slider {...settings} >
+                    {_.keys(this.props.stat).map(city=> {
+                        return (
+                            <div key={city}>
+                                <div className="CitiesSlider__card ">
+                                    <Link to={`/houses-for-sale/${city}`} style={{textDecoration:'none'}}>
+                                        <img className="CitiesSlider__card-image"
+                                             src={this.props.stat[city].cityImage}
+                                             alt={`${city} houses for sale`}/>
+                                        <h4 className="CitiesSlider__city">
+                                            {_.startCase(city) + " Homes for Sale"}
+                                        </h4>
+                                    </Link>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </Slider>
+                }
             </div>
         );
     }

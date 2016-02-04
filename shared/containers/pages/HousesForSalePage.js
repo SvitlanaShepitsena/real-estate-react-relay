@@ -5,6 +5,8 @@ import Helmet from "react-helmet";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
+import SliderResponsive from '../../components/SliderResponsive/SliderResponsive.js';
+
 import Spinner from 'react-mdl/lib/Spinner';
 import {Link} from 'react-router';
 import {fbImage, appType, ogProps} from "../../config.js";
@@ -73,27 +75,41 @@ class HousesForSalePageContainer extends Component {
                         })}
                     </Grid>}
                     <h2>Home Prices in Chicago Suburbs</h2>
+                    <SliderResponsive  ></SliderResponsive>
+
                     <Grid>
                         <Cell col={2}>
-                            <h3>1 Bedroom Homes</h3>
+                            <h5>Studios</h5>
                             <Card style={{width:'100%'}}>
                                 <p>Sorry, there is no listings present at this time</p>
                             </Card>
                         </Cell>
                         <Cell col={2}>
-                            <h3>2 Bedroom Homes</h3>
+                            <h5>1 Bedroom Homes</h5>
                             <Card style={{width:'100%'}}>
                                 <p>Sorry, there is no listings present at this time</p>
                             </Card>
                         </Cell>
                         <Cell col={2}>
-                            <h3>3 Bedroom Homes</h3>
+                            <h5>2 Bedroom Homes</h5>
                             <Card style={{width:'100%'}}>
                                 <p>Sorry, there is no listings present at this time</p>
                             </Card>
                         </Cell>
                         <Cell col={2}>
-                            <h3>4 Bedroom Homes</h3>
+                            <h5>3 Bedroom Homes</h5>
+                            <Card style={{width:'100%'}}>
+                                <p>Sorry, there is no listings present at this time</p>
+                            </Card>
+                        </Cell>
+                        <Cell col={2}>
+                            <h5>4 Bedroom Homes</h5>
+                            <Card style={{width:'100%'}}>
+                                <p>Sorry, there is no listings present at this time</p>
+                            </Card>
+                        </Cell>
+                        <Cell col={2}>
+                            <h5>5 Bedroom Homes</h5>
                             <Card style={{width:'100%'}}>
                                 <p>Sorry, there is no listings present at this time</p>
                             </Card>

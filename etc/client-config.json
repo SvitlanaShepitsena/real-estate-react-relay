@@ -15,6 +15,7 @@
   "emailAuthURL": "http://www.remax1stclass.com/auth/local/",
   "facebookAppId": "781844735261747",
   "companyShareLink": "http://www.remax1stclass.com",
+  "mainCities": [{"city":"skokie"}],
   "houseImageThumb": "https://res.cloudinary.com/svitlana/image/upload/v1453494429/house-picture-icon_og71rx.png",
   "ogProps": {
     "homePage": {

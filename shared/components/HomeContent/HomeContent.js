@@ -46,9 +46,10 @@ export default class HomeContent extends React.Component {
                     </Cell>
 
                 </Grid>
+
                 <div className="HomePage_sliderContainer">
                     <div className="HomePage_slider">
-                        <CitiesSlider></CitiesSlider>
+                        <CitiesSlider {...this.props}></CitiesSlider>
                     </div>
                 </div>
             </div>

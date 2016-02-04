@@ -3,12 +3,14 @@ import _ from 'lodash';
 import Helmet from "react-helmet";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import Spinner from 'react-mdl/lib/Spinner';
 
 import {fbImage, appImage, appTitle, appType, appUrl, ogProps} from "../../config.js";
 import HomeContent from '../../components/HomeContent/HomeContent.js';
 import HousesList from '../../components/HomeContent/HousesList.js';
 import * as citiesActions from '../../actions/cities';
 import * as rentCitiesActions from '../../actions/rentCities';
+import * as statActions from '../../actions/stat';
 
 class HomePageContainer extends React.Component {
     constructor(props) {
@@ -16,7 +18,9 @@ class HomePageContainer extends React.Component {
     }
 
     componentDidMount() {
+
         this.props.getCitiesIfNeeded();
+        this.props.getStatsIfNeeded();
         this.props.getRentCitiesIfNeeded();
     }
 
@@ -41,7 +45,15 @@ class HomePageContainer extends React.Component {
                     {"property": "og:description", "content": `${home.description}`}
                 ]}
                 />
-                <HomeContent></HomeContent>
+                {this.props.isFetching &&
+                <div style={{maxWidth:100,margin:"0 auto"}}>
+                    <Spinner singleColor/>
+                </div>
+                }
+                {!this.props.isFetching &&
+                <HomeContent stat={_.pickBy(this.props.stat.stat,city=>city.cityImage)}></HomeContent>
+                }
+
                 {/*
                  <HousesList cities={cities} rentCities={rentCities}></HousesList>
                  */}
@@ -54,9 +66,10 @@ function mapStateToProps(state) {
     return state;
 }
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(Object.assign({}, rentCitiesActions, citiesActions), dispatch);
+    return bindActionCreators(Object.assign({}, statActions, rentCitiesActions, citiesActions), dispatch);
 }
 HomePageContainer.need = [
+    statActions.getStatsIfNeeded,
     citiesActions.getCitiesIfNeeded,
     rentCitiesActions.getRentCitiesIfNeeded
 ]
