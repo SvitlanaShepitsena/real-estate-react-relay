@@ -113,7 +113,7 @@ app.use((req, res) => {
                     renderProps.location
                 )
                     .then(() => {
-                        const componentHTML = ReactDOM.renderToStaticMarkup(
+                        const componentHTML = ReactDOM.renderToString(
                             <Provider store={store}>
                                 <i18n.Provider i18n={i18nTools}>
                                     <RoutingContext {...renderProps}/>
@@ -128,7 +128,6 @@ app.use((req, res) => {
                             route: renderProps.routes[renderProps.routes.length - 1].path,
                             state: initialState
                         });
-
 
                         return renderHTML(helmet,
                             {
