@@ -19,6 +19,8 @@ import StatisticsGrid from '../../components/SliderResponsive/StatisticsGrid.js'
 import CityRemaxWelcome from '../../components/City/CityRemaxWelcome.js';
 import CityPropTypes from '../../components/City/CityPropTypes.js';
 import CityZips from '../../components/City/CityZips.js';
+
+import * as statsActions from '../../actions/stat';
 import * as cityInfoActions from '../../actions/cityInfo';
 
 class cityPage extends Component {
@@ -26,10 +28,13 @@ class cityPage extends Component {
 
     componentDidMount() {
         this.props.getCityInfoIfNeeded(this.props.params, this.props.location);
+        this.props.getStatsIfNeeded(this.props.params, this.props.location);
     }
 
     render() {
-        let cityInfo = this.props.cityInfo;
+
+
+        let cityInfo = store.cityInfo.cityInfo;
 
         let types = [];
         let allHouses = [];
@@ -67,100 +72,100 @@ class cityPage extends Component {
         let ogDescriptionRent = ('✔ Browse ' + cityName + ' homes for rent, sorted by zip code or property type. ☏   Call us for a free consultation and schedule a showing!');
 
         return (
-            <div>
-                {saleRent == 'sale' && cityName &&
-                <Helmet
-                    title={metaTitleSale}
-                    meta={[
+        <div>
+            {saleRent == 'sale' && cityName &&
+            <Helmet
+                title={metaTitleSale}
+                meta={[
                         {"name": "image", "content": `${fbImage}`},
                         {"name": "description", "content": `${metaDescriptionSale}`},
                         {"property": "og:title", "content": `${ogTitleSale}`},
                         {"property": "og:image", "content": `${fbImage}`},
                         {"property": "og:description", "content": `${ogDescriptionSale}`}
                     ]}
-                />
-                }
-                {saleRent == 'rent' &&
-                <Helmet
-                    title={metaTitleRent}
-                    meta={[
+            />
+            }
+            {saleRent == 'rent' &&
+            <Helmet
+                title={metaTitleRent}
+                meta={[
                         {"name": "image", "content": `${fbImage}`},
                         {"name": "description", "content": `${metaDescriptionRent}`},
                         {"property": "og:title", "content": `${ogTitleRent}`},
                         {"property": "og:image", "content": `${fbImage}`},
                         {"property": "og:description", "content": `${ogDescriptionRent}`}
                     ]}
-                />
-                }
+            />
+            }
 
 
+            {this.props.isFetching &&
+            <div style={{maxWidth:100,margin:"0 auto"}}>
+                <Spinner singleColor/>
+            </div>
+            }
 
-                {this.props.isFetching &&
-                <div style={{maxWidth:100,margin:"0 auto"}}>
-                    <Spinner singleColor/>
-                </div>
-                }
 
-
-                {!this.props.params.zipType && !this.props.isFetching &&
-                <div>
-                    <ul
-                        style={{listStyle:'none', margin:'0px', padding:'0px'}}>
-                        <li style={{display:'inline-block'}}>
-                            {saleRent == 'sale' &&
-                            <Link style={{textDecoration:'none', fontSize:13, color:'#424242'}} to="/houses-for-sale">Houses
+            {this.props.isFetching &&
+            <div>
+                <ul
+                    style={{listStyle:'none', margin:'0px', padding:'0px'}}>
+                    <li style={{display:'inline-block'}}>
+                        {saleRent == 'sale' &&
+                        <Link style={{textDecoration:'none', fontSize:13, color:'#424242'}} to="/houses-for-sale">Houses
                                 For Sale
-                            </Link>}
-                            {saleRent == 'rent' &&
-                            <Link style={{textDecoration:'none', fontSize:13, color:'#424242'}}
-                                  to="/apartments-for-rent">Apartments
+                        </Link>}
+                        {saleRent == 'rent' &&
+                        <Link style={{textDecoration:'none', fontSize:13, color:'#424242'}}
+                              to="/apartments-for-rent">Apartments
                                 For Rent
-                            </Link>}
-                            <span> / </span>
-                        </li>
-                        <li style={{display:'inline-block'}}>
-                            <span style={{textDecoration:'none', fontSize:13, color:'#757575'}}> {cityName}
-                            </span>
-                        </li>
-                    </ul>
-                    {saleRent == 'rent' &&
-                    <h1 style={{fontSize:32}}> {cityName + " Apartments for Rent "}</h1>
-                    }
-                    {saleRent == 'sale' &&
-                    <h1 style={{fontSize:32}}> {cityName + " Houses for Sale "}</h1>
-                    }
-                    <hr/>
-
-                    {/*Listing data from db*/}
-                    <Grid >
-                        <Cell col={6} phone={12}>
-                            <CityZips  {...this.props}></CityZips>
-                        </Cell>
-
-                        <Cell col={6} phone={12}>
-                            <CityPropTypes {...this.props}></CityPropTypes>
-                        </Cell>
-                    </Grid>
-                    <h2 style={{marginBottom:0}}>{"Home Prices in " + cityName} </h2>
-                    <hr/>
-                    <StatisticsGrid></StatisticsGrid>
-                    <hr/>
-                    <CityRemaxWelcome {...this.props} ></CityRemaxWelcome>
-
-                </div>
+                        </Link>}
+                        <span>/</span>
+                    </li>
+                    <li style={{display:'inline-block'}}>
+                        <span style={{textDecoration:'none', fontSize:13, color:'#757575'}}> {cityName}
+                        </span>
+                    </li>
+                </ul>
+                {saleRent == 'rent' &&
+                <h1 style={{fontSize:32}}> {cityName + " Apartments for Rent "}</h1>
                 }
+                {saleRent == 'sale' &&
+                <h1 style={{fontSize:32}}> {cityName + " Houses for Sale "}</h1>
+                }
+                <hr/>
 
-            </div >
-        );
+                {/*Listing data from db*/}
+                <Grid >
+                    <Cell col={6} phone={12}>
+                        <CityZips  {...this.props}></CityZips>
+                    </Cell>
+
+                    <Cell col={6} phone={12}>
+                        <CityPropTypes {...this.props}></CityPropTypes>
+                    </Cell>
+                </Grid>
+                <h2 style={{marginBottom:0}}>{"Home Prices in " + cityName} </h2>
+                <hr/>
+                <StatisticsGrid></StatisticsGrid>
+                <hr/>
+                <CityRemaxWelcome {...this.props} ></CityRemaxWelcome>
+
+            </div>
+            }
+
+        </div >
+    )
+        ;
     }
 }
 function mapStateToProps(state) {
-    return state.cityInfo;
+    return state;
 
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(cityInfoActions, dispatch);
+    return bindActionCreators(Object.assign({}, statsActions, cityInfoActions), dispatch);
 }
 cityPage.need = [
     cityInfoActions.getCityInfoIfNeeded
