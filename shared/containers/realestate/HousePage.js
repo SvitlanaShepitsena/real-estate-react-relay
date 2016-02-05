@@ -32,12 +32,13 @@ class HousePage extends Component {
 
         var saleRent = this.props.location.pathname.indexOf('sale') > -1 ? 'sale' : 'rent';
         var house = this.props.house;
-        /*Link URL*/
-        const cityUrl = this.props.house.address.city.toLowerCase().replace(/\s+/g, '-');
 
         if (house) {
+            /*Link URL*/
+            const cityUrl = this.props.house.address.city.toLowerCase().replace(/\s+/g, '-');
 
             var price = this.props.house.price.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+
             var mls = 'MLS#:' + this.props.house.mls;
 
             var metaImage = house.images[0];

@@ -12,6 +12,7 @@ export default class ListingThumbCard extends Component {
     render() {
 
         const house = this.props.house
+        const housePrice = house.price.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 
         return (
             <Card className="ListingThumbCard" shadow={0}>

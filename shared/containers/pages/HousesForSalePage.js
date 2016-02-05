@@ -80,7 +80,8 @@ class HousesForSalePageContainer extends Component {
                                 </Cell>
                             );
                         })}
-                    </Grid>}
+                    </Grid>
+                    }
 
                 </div>
                 }
