@@ -93,7 +93,7 @@ app.use((req, res) => {
     if (req.user) {
         console.log(req.user);
     }
-    const store = configureStore({user: req.user});
+    const store = configureStore({user: req.user, url: hostUrl.toString()});
 
     const i18nTools = i18nToolsRegistry[locale];
     // Method of React-router that provides renderProp with property components consisting of all components for the particular view

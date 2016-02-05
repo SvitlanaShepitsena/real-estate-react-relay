@@ -13,6 +13,7 @@ if (process.env.BROWSER) {
 export default class CitiesSlider extends React.Component {
 
     render() {
+        console.log(this.props.stat);
         var settings = {
             dots: true,
             infinite: false,

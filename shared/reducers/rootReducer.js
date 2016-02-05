@@ -3,6 +3,7 @@ import {combineReducers} from 'redux';
 
 import {reducer as form} from 'redux-form';
 import user from './user';
+import url from './url';
 import articles from './article';
 import cities from './cities';
 import stat from './stat';
@@ -12,6 +13,7 @@ import houses from './houses';
 import house from './house';
 
 const rootReducer = combineReducers({
+    url,
     form,
     rentCities,
     cities,

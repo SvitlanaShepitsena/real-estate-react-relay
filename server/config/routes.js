@@ -1,8 +1,10 @@
 var users = require('../controllers/users');
 var _ = require('lodash');
+import list from './youtube/youtube-lists';
 
 export default  function (app, passport) {
     // user routes
+    app.get('/youtube', list);
 
     app.post('/login', users.postLogin);
     app.get('/logout', users.getLogout);

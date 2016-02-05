@@ -24,6 +24,7 @@ class ZipTypePage extends Component {
     }
 
     render() {
+
         let zipType = _.startCase(this.props.params.zipType.replace(/-+/g, ' '));
 
         let city = _.startCase(this.props.params.city.replace(/-+/g, ' '));
