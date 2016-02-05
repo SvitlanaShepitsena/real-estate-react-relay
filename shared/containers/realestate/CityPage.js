@@ -169,20 +169,17 @@ class cityPage extends Component {
                                 </CardTitle>
                                 <CardText
                                     style={{width: '100%', margin: 0, borderTop: '1px #E0E0E0 solid', boxSizing: 'border-box'}}>
-                                    {this.types &&
-                                    <div>
-                                        {this.types.map(type=> {
-                                            return (
-                                                <h5 style={{marginTop:0,fontSize:15, fontWeight:500}} key={type.type}>
-                                                    <Link
-                                                        to={this.props.location.pathname+'/'+type.type.replace(/\s+/g,'-').toLowerCase()}
-                                                        style={{color: '#393939',textDecoration:'none'}}>
-                                                        {`${type.type}(${type.count})`}
-                                                    </Link>
-                                                </h5>
-                                            );
-                                        })}
-                                    </div>}
+                                    {this.types && this.types.map(type=> {
+                                        return (
+                                            <h5 style={{marginTop:0,fontSize:15, fontWeight:500}} key={type.type}>
+                                                <Link
+                                                    to={this.props.location.pathname+'/'+ type.type.replace(/\s+/g,'-').toLowerCase()}
+                                                    style={{color: '#393939',textDecoration:'none'}}>
+                                                    {`${type.type}(${type.count})`}
+                                                </Link>
+                                            </h5>
+                                        );
+                                    })}
                                 </CardText>
                             </Card>
                         </Cell>

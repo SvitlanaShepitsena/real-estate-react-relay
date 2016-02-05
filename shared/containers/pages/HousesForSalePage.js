@@ -37,6 +37,9 @@ class HousesForSalePageContainer extends Component {
         const sale = ogProps.housesForSalePage;
         const cities = _.keys(this.props.cities);
 
+        /*Link URL*/
+        const cityUrl = this.props.house.address.city.toLowerCase().replace(/\s+/g, '-');
+
         return (
             <div style={{maxWidth:"100%"}}>
                 <Helmet
@@ -66,7 +69,7 @@ class HousesForSalePageContainer extends Component {
                                 <Cell
                                     col={4}
                                     key={city}>
-                                    <Link to={this.props.location.pathname+ '/'+ city.replace(/\s+/g, '-')}
+                                    <Link to={this.props.location.pathname + '/'+ cityUrl}
                                           style={{textDecoration:'none', color:'#393939',fontSize:18}}>
                                         {_.startCase(city.replace(/-+/, ' '))}
                                     </Link>
@@ -74,8 +77,12 @@ class HousesForSalePageContainer extends Component {
                             );
                         })}
                     </Grid>}
-                    <h2>Home Prices in Chicago Suburbs</h2>
-                    <ChicagoSuburbsPricesSlider></ChicagoSuburbsPricesSlider>
+                    <h2>Average Home Prices in Chicago Suburbs</h2>
+                    <Grid>
+                        <Cell col={12}>
+                            <ChicagoSuburbsPricesSlider></ChicagoSuburbsPricesSlider>
+                        </Cell>
+                    </Grid>
 
                 </div>
                 }

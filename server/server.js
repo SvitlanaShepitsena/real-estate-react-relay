@@ -78,7 +78,7 @@ app.all(/.*/, function (req, res, next) {
     next();
 });
 
-app.use('/static', express.static('public/static', {maxAge: 8640}));
+app.use('/static', express.static('public/static', {maxAge: 8640000}));
 app.use(cookieParser());
 
 configPassport(app, passport);
@@ -180,9 +180,9 @@ function renderHTML(helmet, {componentHTML, initialState, metaData, config}) {
             window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
           </script>
 
-          <script type="application/javascript" src="${config.staticUrl}/static/build/main.js"></script>
             <script src="https://apis.google.com/js/api:client.js"></script>
             <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+          <script type="application/javascript" src="${config.staticUrl}/static/build/main.js"></script>
 
         </body>
         </html>
