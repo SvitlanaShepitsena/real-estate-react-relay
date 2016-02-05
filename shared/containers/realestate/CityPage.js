@@ -1,4 +1,5 @@
 'use strict';
+
 import React, {Component, PropTypes} from 'react';
 import Breadcrumbs from 'react-breadcrumbs';
 import Helmet from 'react-helmet';
