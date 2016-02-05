@@ -39,24 +39,12 @@ export default class SliderResponsive extends React.Component {
         };
         return (
             <Slider {...settings}>
-                <div >
-                    <h3 className="SliderResponsive__slide-content">1</h3>
-                </div>
-                <div>
-                    <h3 className="SliderResponsive__slide-content">2</h3>
-                </div>
-                <div>
-                    <h3 className="SliderResponsive__slide-content">3</h3>
-                </div>
-                <div>
-                    <h3 className="SliderResponsive__slide-content">4</h3>
-                </div>
-                <div>
-                    <h3 className="SliderResponsive__slide-content">5</h3>
-                </div>
-                <div>
-                    <h3 className="SliderResponsive__slide-content">6</h3>
-                </div>
+                <div><h3 className="SliderResponsive__slide-content">studio for sale</h3></div>
+                <div><h3 className="SliderResponsive__slide-content">1 Bedrooms Home for Sale</h3></div>
+                <div><h3 className="SliderResponsive__slide-content">2 Bedrooms Home for Sale</h3></div>
+                <div><h3 className="SliderResponsive__slide-content">3 Bedrooms Home for Sale</h3></div>
+                <div><h3 className="SliderResponsive__slide-content">4 Bedrooms Home for Sale</h3></div>
+                <div><h3 className="SliderResponsive__slide-content">5 Bedrooms Home for Sale</h3></div>
             </Slider>
         )
     }

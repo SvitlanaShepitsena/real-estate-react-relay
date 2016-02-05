@@ -60,7 +60,8 @@ export default class CitiesSlider extends React.Component {
                         return (
                             <div key={city}>
                                 <div className="CitiesSlider__card ">
-                                    <Link to={`/houses-for-sale/${city}`} style={{textDecoration:'none'}}>
+                                    <Link to={`/houses-for-sale/${city.replace(/\s+/g, '-')}`}
+                                          style={{textDecoration:'none'}}>
                                         <img className="CitiesSlider__card-image"
                                              src={this.props.stat[city].cityImage}
                                              alt={`${city} houses for sale`}/>

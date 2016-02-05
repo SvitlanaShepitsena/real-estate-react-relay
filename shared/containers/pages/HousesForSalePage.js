@@ -75,46 +75,8 @@ class HousesForSalePageContainer extends Component {
                         })}
                     </Grid>}
                     <h2>Home Prices in Chicago Suburbs</h2>
-                    <SliderResponsive  ></SliderResponsive>
+                    <SliderResponsive></SliderResponsive>
 
-                    <Grid>
-                        <Cell col={2}>
-                            <h5>Studios</h5>
-                            <Card style={{width:'100%'}}>
-                                <p>Sorry, there is no listings present at this time</p>
-                            </Card>
-                        </Cell>
-                        <Cell col={2}>
-                            <h5>1 Bedroom Homes</h5>
-                            <Card style={{width:'100%'}}>
-                                <p>Sorry, there is no listings present at this time</p>
-                            </Card>
-                        </Cell>
-                        <Cell col={2}>
-                            <h5>2 Bedroom Homes</h5>
-                            <Card style={{width:'100%'}}>
-                                <p>Sorry, there is no listings present at this time</p>
-                            </Card>
-                        </Cell>
-                        <Cell col={2}>
-                            <h5>3 Bedroom Homes</h5>
-                            <Card style={{width:'100%'}}>
-                                <p>Sorry, there is no listings present at this time</p>
-                            </Card>
-                        </Cell>
-                        <Cell col={2}>
-                            <h5>4 Bedroom Homes</h5>
-                            <Card style={{width:'100%'}}>
-                                <p>Sorry, there is no listings present at this time</p>
-                            </Card>
-                        </Cell>
-                        <Cell col={2}>
-                            <h5>5 Bedroom Homes</h5>
-                            <Card style={{width:'100%'}}>
-                                <p>Sorry, there is no listings present at this time</p>
-                            </Card>
-                        </Cell>
-                    </Grid>
                 </div>
                 }
 
