@@ -6,7 +6,8 @@ import _ from 'lodash';
 export default (props)=> {
 
     return (
-       <Link to={props.url.toLowerCase().replace(/\s+/g, '-')}>{_.startCase(props.anchor.replace(/-+/g, ' '))}</Link>
+        <Link className={props.className?props.className:""}
+              to={props.url.toLowerCase().replace(/\s+/g, '-')}>{_.startCase(props.anchor.replace(/-+/g, ' '))}</Link>
     );
 
 }

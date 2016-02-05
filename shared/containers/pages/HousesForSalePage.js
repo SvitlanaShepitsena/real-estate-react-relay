@@ -4,6 +4,7 @@ import React, {Component, PropTypes} from 'react';
 import Helmet from "react-helmet";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import CityUrl from '../../components/common/CityUrl/CityUrl.js';
 
 import ChicagoSuburbsPricesSlider from '../../components/SliderResponsive/ChicagoSuburbsPricesSlider.js';
 
@@ -37,9 +38,6 @@ class HousesForSalePageContainer extends Component {
         const sale = ogProps.housesForSalePage;
         const cities = _.keys(this.props.cities);
 
-        /*Link URL*/
-        const cityUrl = this.props.house.address.city.toLowerCase().replace(/\s+/g, '-');
-
         return (
             <div style={{maxWidth:"100%"}}>
                 <Helmet
@@ -69,7 +67,12 @@ class HousesForSalePageContainer extends Component {
                                 <Cell
                                     col={4}
                                     key={city}>
-                                    <Link to={this.props.location.pathname + '/'+ cityUrl}
+                                    <CityUrl
+                                        url={this.props.location.pathname+ '/'+ city}
+                                        anchor={city}
+                                        className="HousesFroSalePage__link"
+                                    />
+                                    <Link to={this.props.location.pathname+ '/'+ city.replace(/\s+/g, '-')}
                                           style={{textDecoration:'none', color:'#393939',fontSize:18}}>
                                         {_.startCase(city.replace(/-+/, ' '))}
                                     </Link>
@@ -77,7 +80,7 @@ class HousesForSalePageContainer extends Component {
                             );
                         })}
                     </Grid>}
-                    <h2>Average Home Prices in Chicago Suburbs</h2>
+                    <h2>Avarage Home Prices in Chicago Suburbs</h2>
                     <Grid>
                         <Cell col={12}>
                             <ChicagoSuburbsPricesSlider></ChicagoSuburbsPricesSlider>
@@ -85,14 +88,17 @@ class HousesForSalePageContainer extends Component {
                     </Grid>
 
                 </div>
-                }
-
-                {this.props.params.city &&
+                } {
+                this
+                    .props
+                    .params
+                    .city
+                &&
                 <div>
                     {this.props.children}
 
                 </div>
-                }
+            }
             </div>
         );
     }
