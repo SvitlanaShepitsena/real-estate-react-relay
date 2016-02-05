@@ -28,11 +28,10 @@ class cityPage extends Component {
         let allHouses = [];
         _.values(_.values(cityInfo)).forEach(zip=> {
             let houses = (_.map(_.values(zip), 'type'));
-            allHouses= _.concat(allHouses,houses);
+            allHouses = _.concat(allHouses, houses);
         });
 
         let propsCount = _.countBy(_.flatten(allHouses));
-
 
         _.forOwn(propsCount, (val, key)=> {
             types.push({type: key, count: val});

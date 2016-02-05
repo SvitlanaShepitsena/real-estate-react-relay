@@ -5,7 +5,7 @@ import Helmet from "react-helmet";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import SliderResponsive from '../../components/SliderResponsive/SliderResponsive.js';
+import ChicagoSuburbsPricesSlider from '../../components/SliderResponsive/ChicagoSuburbsPricesSlider.js';
 
 import Spinner from 'react-mdl/lib/Spinner';
 import {Link} from 'react-router';
@@ -66,7 +66,7 @@ class HousesForSalePageContainer extends Component {
                                 <Cell
                                     col={4}
                                     key={city}>
-                                    <Link to={this.props.location.pathname+ '/'+ city}
+                                    <Link to={this.props.location.pathname+ '/'+ city.replace(/\s+/g, '-')}
                                           style={{textDecoration:'none', color:'#393939',fontSize:18}}>
                                         {_.startCase(city.replace(/-+/, ' '))}
                                     </Link>
@@ -75,7 +75,7 @@ class HousesForSalePageContainer extends Component {
                         })}
                     </Grid>}
                     <h2>Home Prices in Chicago Suburbs</h2>
-                    <SliderResponsive></SliderResponsive>
+                    <ChicagoSuburbsPricesSlider></ChicagoSuburbsPricesSlider>
 
                 </div>
                 }
