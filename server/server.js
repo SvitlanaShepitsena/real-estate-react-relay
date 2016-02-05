@@ -78,7 +78,7 @@ app.all(/.*/, function (req, res, next) {
     next();
 });
 
-app.use('/static', express.static('public/static', {maxAge: 8640000}));
+app.use('/static', express.static('public/static', {maxAge: 8640}));
 app.use(cookieParser());
 
 configPassport(app, passport);
