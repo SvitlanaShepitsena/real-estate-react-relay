@@ -46,7 +46,7 @@ class HousesForRentPageContainer extends Component {
                                 <Cell
                                     col={4}
                                     key={city}>
-                                    <Link to={this.props.location.pathname+ '/'+ city}
+                                    <Link to={this.props.location.pathname+ '/'+ city.replace(/\s+/g, '-')}
                                           style={{textDecoration:'none', color:'#393939',fontSize:18}}>
                                         {_.startCase(city.replace(/-+/, ' '))}
                                     </Link>

@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 
 if (process.env.BROWSER) {
-    require('./SliderResponsive.less');
+    require('./ChicagoSuburbsPricesSlider.less');
 }
 export default class SliderResponsive extends React.Component {
     constructor(props) {
@@ -39,12 +39,12 @@ export default class SliderResponsive extends React.Component {
         };
         return (
             <Slider {...settings}>
-                <div><h3 className="SliderResponsive__slide-content">studio for sale</h3></div>
-                <div><h3 className="SliderResponsive__slide-content">1 Bedrooms Home for Sale</h3></div>
-                <div><h3 className="SliderResponsive__slide-content">2 Bedrooms Home for Sale</h3></div>
-                <div><h3 className="SliderResponsive__slide-content">3 Bedrooms Home for Sale</h3></div>
-                <div><h3 className="SliderResponsive__slide-content">4 Bedrooms Home for Sale</h3></div>
-                <div><h3 className="SliderResponsive__slide-content">5 Bedrooms Home for Sale</h3></div>
+                <div><h3 className="ChicagoSuburbsPricesSlider__slide-content">Studio for sale</h3></div>
+                <div><h3 className="ChicagoSuburbsPricesSlider__slide-content">1 Bedrooms Home for Sale</h3></div>
+                <div><h3 className="ChicagoSuburbsPricesSlider__slide-content">2 Bedrooms Home for Sale</h3></div>
+                <div><h3 className="ChicagoSuburbsPricesSlider__slide-content">3 Bedrooms Home for Sale</h3></div>
+                <div><h3 className="ChicagoSuburbsPricesSlider__slide-content">4 Bedrooms Home for Sale</h3></div>
+                <div><h3 className="ChicagoSuburbsPricesSlider__slide-content">5 Bedrooms Home for Sale</h3></div>
             </Slider>
         )
     }
