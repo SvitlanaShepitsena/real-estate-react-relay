@@ -6,8 +6,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import CityUrl from '../../components/common/CityUrl/CityUrl.js';
 
-import ChicagoSuburbsPricesSlider from '../../components/SliderResponsive/ChicagoSuburbsPricesSlider.js';
-
 import Spinner from 'react-mdl/lib/Spinner';
 import {Link} from 'react-router';
 import {fbImage, appType, ogProps} from "../../config.js";
@@ -16,9 +14,16 @@ import Grid, {Cell} from 'react-mdl/lib/Grid';
 import {Card, CardTitle, CardActions} from 'react-mdl/lib/Card';
 import _ from 'lodash';
 
+/*Components*/
+import StatisticsGrid from '../../components/SliderResponsive/StatisticsGrid.js';
+import ChicagoSuburbsPricesSlider from '../../components/SliderResponsive/ChicagoSuburbsPricesSlider.js';
 import CityCard from '../../components/City/CityCard';
+
 import * as citiesActions from '../../actions/cities';
 
+if (process.env.BROWSER) {
+    require('../../assets/typography.less');
+}
 class HousesForSalePageContainer extends Component {
     static contextTypes = {i18n: PropTypes.object};
 
@@ -70,22 +75,12 @@ class HousesForSalePageContainer extends Component {
                                     <CityUrl
                                         url={this.props.location.pathname+ '/'+ city}
                                         anchor={city}
-                                        className="HousesFroSalePage__link"
+                                        className="link-18"
                                     />
-                                    <Link to={this.props.location.pathname+ '/'+ city.replace(/\s+/g, '-')}
-                                          style={{textDecoration:'none', color:'#393939',fontSize:18}}>
-                                        {_.startCase(city.replace(/-+/, ' '))}
-                                    </Link>
                                 </Cell>
                             );
                         })}
                     </Grid>}
-                    <h2>Avarage Home Prices in Chicago Suburbs</h2>
-                    <Grid>
-                        <Cell col={12}>
-                            <ChicagoSuburbsPricesSlider></ChicagoSuburbsPricesSlider>
-                        </Cell>
-                    </Grid>
 
                 </div>
                 } {

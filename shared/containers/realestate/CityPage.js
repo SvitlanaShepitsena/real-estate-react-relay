@@ -11,7 +11,9 @@ import _ from 'lodash';
 
 import Grid, {Cell} from 'react-mdl/lib/Grid';
 import {Card, CardTitle, CardActions, CardText} from 'react-mdl/lib/Card';
+
 /*Components*/
+import StatisticsGrid from '../../components/SliderResponsive/StatisticsGrid.js';
 import * as cityInfoActions from '../../actions/cityInfo';
 
 class cityPage extends Component {
@@ -184,6 +186,9 @@ class cityPage extends Component {
                             </Card>
                         </Cell>
                     </Grid>
+                    <h2 style={{marginBottom:0}}>{"Home Prices in " + _.startCase(city)} </h2>
+                    <StatisticsGrid></StatisticsGrid>
+                    <h2 style={{marginBottom:0}}> Nearby Cities </h2>
                     < article >
                         {saleRent == 'sale' &&
                         <h4>
