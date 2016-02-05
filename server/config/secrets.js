@@ -4,7 +4,6 @@ export default function () {
         var config = require('../../etc/no-share.json');
     }
     return {
-        db: 'mongodb://redux:FeCtut@ds039175.mongolab.com:39175/redux',
         sessionSecret: 'random-session-string',
         google: {
             clientID: process.env.GOOGLE_CLIENTID || config.googleClientID,

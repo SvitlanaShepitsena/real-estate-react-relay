@@ -13,7 +13,7 @@ export const REMOVE_ARTICLE = 'REMOVE_ARTICLE';
 export function articlesGet() {
     return {
         type: ARTICLES_GET,
-        promise: request.get('https://chicagowepapp.firebaseio.com/articles.json')
+        promise: request('https://chicagowepapp.firebaseio.com/articles.json')
     };
 }
 

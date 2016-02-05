@@ -1,5 +1,12 @@
 //axios - Promise based HTTP client for the browser and node.js
 import request from 'axios';
+
+import Promise     from 'bluebird';
+
+
+
+
+
 import config from '../config';
 export const HOUSES_GET = 'HOUSES_GET';
 export const HOUSES_GET_REQUEST = 'HOUSES_GET_REQUEST';
@@ -11,7 +18,7 @@ export const HOUSES_GET_FAILURE = 'HOUSES_GET_FAILURE';
 export function housesGet(saleRent,city,zipType) {
     return {
         type: HOUSES_GET,
-        promise: request.get(`${config.fireDb}/${saleRent}/${city}.json`),
+        promise: request.get(`${config.fireDb}${saleRent}/${city}.json`,{timeout:53000}),
         obj:true,
         filter:zipType
     };

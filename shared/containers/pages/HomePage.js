@@ -19,9 +19,9 @@ class HomePageContainer extends React.Component {
 
     componentDidMount() {
 
-        this.props.getCitiesIfNeeded();
         this.props.getStatsIfNeeded();
-        this.props.getRentCitiesIfNeeded();
+        //this.props.getCitiesIfNeeded();
+        //this.props.getRentCitiesIfNeeded();
     }
 
     render() {

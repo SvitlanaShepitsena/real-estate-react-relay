@@ -6,7 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {Router} from 'react-router';
-import fetch from 'isomorphic-fetch';
+import fetch from 'axios';
 import cookie from 'cookie';
 
 import configureStore from '../shared/store/configureStore';
@@ -18,13 +18,7 @@ const initialState = window.__INITIAL_STATE__ || {};
 const store = configureStore(initialState);
 const locale = cookie.parse(document.cookie).locale || DEFAULT_LOCALE;
 
-fetch(`/static/lang/${locale}.json`).then(res => {
-    if (res.status >= 400) {
-        throw new Error('Bad response from server');
-    }
-
-    return res.json();
-}).then(localeData => {
+fetch.get(`/static/lang/${locale}.json`).then(localeData => {
     const i18nTools = new i18n.Tools({localeData, locale});
 
     ReactDOM.render(

@@ -24,7 +24,6 @@ class ZipTypePage extends Component {
     }
 
     render() {
-
         let zipType = _.startCase(this.props.params.zipType.replace(/-+/g, ' '));
 
         let city = _.startCase(this.props.params.city.replace(/-+/g, ' '));
@@ -74,11 +73,7 @@ class ZipTypePage extends Component {
                 />
                 }
 
-                {this.props.params.street &&
-                <div>
-                    {this.props.children}
-                </div>
-                }
+
 
                 {!this.props.params.street && !this.props.isFetching &&
                 <div>
