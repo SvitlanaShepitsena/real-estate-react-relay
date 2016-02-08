@@ -1,4 +1,4 @@
-Universal (Isomorfic) React Relay Application for Real Estate"
+Universal (Isomorfic) React Redux Application for Real Estate"
 ------------------------------------
 
 
