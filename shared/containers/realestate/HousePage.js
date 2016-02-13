@@ -14,6 +14,8 @@ import {Link} from 'react-router';
 import _ from 'lodash';
 
 /*Components*/
+import CityUrl from '../../components/common/CityUrl/CityUrl.js';
+import ZipUrl from '../../components/common/CityUrl/ZipUrl.js';
 import * as houseActions from '../../actions/house';
 
 class HousePage extends Component {
@@ -108,24 +110,28 @@ class HousePage extends Component {
                             </li>
                             <li style={{display:'inline-block'}}>
                                 {saleRent == 'sale' &&
-                                <Link style={{textDecoration:'none', fontSize:13, color:'#424242'}}
-                                      to={`/houses-for-sale/${city.toLowerCase().replace(/\s+/g,'-')}`}>
-                                    {city}
-                                </Link>}
+                                <CityUrl
+                                    url={`/houses-for-sale/${city}`}
+                                    anchor={city}
+                                    className="link-13"/>
+                                }
                                 {saleRent == 'rent' &&
-                                <Link style={{textDecoration:'none', fontSize:13, color:'#424242'}}
-                                      to={`/apartments-for-rent/${city.toLowerCase().replace(/\s+/g,'-')}`}>
-                                    {city}
-                                </Link>}
+                                <CityUrl
+                                    url={`/houses-for-rent/${city}`}
+                                    anchor={city}
+                                    className="link-13"/>
+                                }
                                 <span> / </span>
                             </li>
                             <li style={{display:'inline-block'}}>
                                 {saleRent == 'sale' &&
-                                <Link style={{textDecoration:'none', fontSize:13, color:'#424242'}}
-                                      to={`/houses-for-sale/${city.toLowerCase().replace(/\s+/g,'-')}/${zipType}`}>
-                                    {zipType}
-
-                                </Link>}
+                                <ZipUrl
+                                    url={"houses-for-sale"}
+                                    city={city}
+                                    zip={zipType}
+                                    anchor={zipType}
+                                    className="link-13"/>
+                                }
                                 {saleRent == 'rent' &&
                                 <Link style={{textDecoration:'none', fontSize:13, color:'#424242'}}
                                       to={`/apartments-for-rent/${city.toLowerCase().replace(/\s+/g,'-')}/${zipType}`}>
@@ -133,25 +139,25 @@ class HousePage extends Component {
                                 </Link>}
                                 <span> / </span>
                             </li>
-                            <li style={{display:'inline-block'}}>
+                            < li style={{display:'inline-block'}}>
                                 {house.address.street &&
-                                <span style={{textDecoration:'none', fontSize:13, color:'#757575'}}>
-                                {house.address.street}
-                            </span>
+                                <span style={{textDecoration: 'none', fontSize: 13, color: '#757575'}}>
+                    {house.address.street}
+                    </span>
                                 }
                                 {house.mls &&
-                                <span style={{textDecoration:'none', fontSize:13, color:'#757575'}}>
-                             {" - MLS#" + house.mls  }
-                            </span>
+                                <span style={{textDecoration: 'none', fontSize: 13, color: '#757575'}}>
+                    {" - MLS#" + house.mls  }
+                    </span>
                                 }
                             </li>
                         </ul>
                         <br/>
-                        <Card shadow={0} style={{width:'100%'}}>
-                            <ul style={{listStyle:'none',padding:0}}>
-                                <li style={{display:'block',float:'left', padding:'0px 16px'}}>
+                        <Card shadow={0} style={{width: '100%'}}>
+                            <ul style={{listStyle: 'none', padding: 0}}>
+                                <li style={{display: 'block', float: 'left', padding: '0px 16px'}}>
                                     {/*=Address*/}
-                                    <h1 style={{fontSize:22,marginBottom:5}}>
+                                    <h1 style={{fontSize: 22, marginBottom: 5}}>
                                         {house.address.street &&
                                         <span>{house.address.street}</span>
                                         }
@@ -191,7 +197,7 @@ class HousePage extends Component {
                                      alt={mls + " " + house.type}/>
                                 }
                             </div>
-                            <article style={{margin:'0px 10px'}}>
+                            <article style={{margin: '0px 10px'}}>
                                 {house.description &&
                                 <div>
                                     <h5 >Description</h5>
@@ -199,7 +205,7 @@ class HousePage extends Component {
                                 </div>
                                 }
                             </article>
-                            <article style={{margin:'0px 10px', paddingBottom:16, fontSize:13, width:"100%"}}>
+                            <article style={{margin: '0px 10px', paddingBottom: 16, fontSize: 13, width: "100%"}}>
                                 <h5>Key Facts:</h5>
                                 <Grid>
                                     <Cell col={6} phone={1}>
@@ -333,7 +339,9 @@ class HousePage extends Component {
                         </Card>
                     </div>
                     }
-                </div>}
+                </div>
+                }
+
             </div>
 
         );

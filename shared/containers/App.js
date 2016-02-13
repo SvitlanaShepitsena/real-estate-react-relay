@@ -24,7 +24,7 @@ export default class App extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (this.props.location.pathname !== nextProps.location.pathname) {
-        this.props.urlChange(nextProps.location.pathname);
+            this.props.urlChange(nextProps.location.pathname);
             navigate({
                 page: nextProps.location.pathname,
                 title: nextProps.routes[nextProps.routes.length - 1].path

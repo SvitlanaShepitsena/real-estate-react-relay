@@ -75,7 +75,6 @@ class ZipTypePage extends Component {
                 }
 
 
-
                 {!this.props.params.street && !this.props.isFetching &&
                 <div>
                     {this.props.houses &&
@@ -114,9 +113,16 @@ class ZipTypePage extends Component {
                             </span>
                             </li>
                         </ul>
+                        {saleRent == 'sale' &&
                         <h1 style={{fontSize:28}}>
                             {city} Houses for Sale </h1>
+                        }
+                        {saleRent == 'rent' &&
+                        <h1 style={{fontSize:28}}>
+                            {city} Houses for Sale </h1>
+                        }
                         <hr/>
+
 
                         {/*Listings Data from DB*/}
                         <ul style={{listStyle:'none',padding:0}}>

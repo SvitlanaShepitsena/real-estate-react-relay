@@ -15,7 +15,7 @@ export default class AboutPage extends React.Component {
     render() {
         const about = ogProps.aboutPage;
         return (
-            <di>
+            <div>
                 <Helmet
                     title={about.title}
                     description={about.description}
@@ -33,7 +33,7 @@ export default class AboutPage extends React.Component {
                 ]}
                 />
                 <AboutContent/>
-            </di>
+            </div>
         )
     }
 
