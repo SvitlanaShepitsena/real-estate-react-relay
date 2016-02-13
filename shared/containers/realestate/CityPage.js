@@ -1,4 +1,5 @@
 'use strict';
+
 import React, {Component, PropTypes} from 'react';
 import Breadcrumbs from 'react-breadcrumbs';
 import Helmet from 'react-helmet';
@@ -140,9 +141,6 @@ class cityPage extends Component {
                             <CityPropTypes {...this.props}></CityPropTypes>
                         </Cell>
                     </Grid>
-                    <h2 style={{marginBottom:0}}>{"Home Prices in " + cityName} </h2>
-                    <hr/>
-                    <StatisticsGrid></StatisticsGrid>
                     <hr/>
                     <CityRemaxWelcome {...this.props} ></CityRemaxWelcome>
 
